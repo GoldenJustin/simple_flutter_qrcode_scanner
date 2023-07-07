@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "unicard_scanner" "\0"
+            VALUE "FileDescription", "scanner_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "unicard_scanner" "\0"
+            VALUE "InternalName", "scanner_app" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "unicard_scanner.exe" "\0"
-            VALUE "ProductName", "unicard_scanner" "\0"
+            VALUE "OriginalFilename", "scanner_app.exe" "\0"
+            VALUE "ProductName", "scanner_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,4 +1,4 @@
-# unicard_scanner
+# scanner_app
 
 A new Flutter project.
 
