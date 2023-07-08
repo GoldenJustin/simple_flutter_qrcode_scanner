@@ -15,6 +15,7 @@ class StudentCardApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: CardDetailsPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

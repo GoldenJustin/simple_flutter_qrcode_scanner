@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:http/http.dart' as http;
+import 'package:scanner_app/login_role.dart';
 import 'package:scanner_app/payment.dart';
+import 'package:scanner_app/requestID.dart';
 import 'CardDetails.dart';
 
 class QRCodeScannerApp extends StatelessWidget {
@@ -15,6 +17,7 @@ class QRCodeScannerApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: QRCodeScannerPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -67,6 +70,7 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue.withOpacity(0.4),
         currentIndex: 0,
         items: [
           BottomNavigationBarItem(
@@ -80,6 +84,14 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.payment),
             label: 'payments',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_membership),
+            label: 'RequestID',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.login),
+            label: 'login',
           ),
         ],
         onTap: (index) {
@@ -95,6 +107,24 @@ class _QRCodeScannerPageState extends State<QRCodeScannerPage> {
               MaterialPageRoute(
                 builder: (context) =>
                     MakePaymentPage(),
+              ),
+            );
+          }
+          else if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    IDCardRequestPage(),
+              ),
+            );
+          }
+          else if (index == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    UserLoginScreen(),
               ),
             );
           }
