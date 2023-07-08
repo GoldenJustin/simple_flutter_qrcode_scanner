@@ -50,6 +50,35 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
     }
   }
 
+  Future<void> _logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? '';
+    // Make a POST request to the logout endpoint
+    final response = await http.post(
+      Uri.parse('http://192.168.1.161:8000/user/logout/'),
+      body: {
+        'token': token,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // Parse the response JSON
+      final Map<String, dynamic> responseData = jsonDecode(response.body);
+
+      // Print the status message to the console
+      print(responseData['status']);
+
+      // Clear the stored token and role
+      await prefs.remove('token');
+      await prefs.remove('role');
+
+      // Perform any necessary navigation or screen updates
+    } else {
+      // Handle logout failure, e.g., display an error message
+      print('Logout failed. Status code: ${response.statusCode}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,6 +107,10 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
             ElevatedButton(
               onPressed: _login,
               child: Text('Login'),
+            ),
+            ElevatedButton(
+              onPressed: _logout,
+              child: Text('Logout'),
             ),
           ],
         ),
